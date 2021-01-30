@@ -4,8 +4,6 @@ import javax.persistence.*;
 
 @Table
 @Entity
-
-
 public class Agencia {
 
     @Id
@@ -48,5 +46,10 @@ public class Agencia {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    @Override
+    public String toString() {
+        return "Agencia [numero=" + numero + ", endereco " + endereco + "]";
     }
 }

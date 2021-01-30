@@ -17,18 +17,18 @@
 
     <table>
         <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Numero</th>
-            <th scope="col">Endereço</th>
-        </tr>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Numero</th>
+                <th scope="col">Endereço</th>
+            </tr>
         </thead>
         <tbody>
-        <tr th:each="agencia, count : ${agencias}">
-            <th scope="row" th:text="${count.count}"></th>
-            <td><p th:text="${agencia.numero}"></p></td>
-            <td><p th:text="${agencia.endereco}"></td>
-        </tr>
+            <tr th:each="agencia, count : ${agencias}">
+                <th scope="row" th:text="${count.count}"></th>
+                <td><p th:text="${agencia.numero}"></p></td>
+                <td><p th:text="${agencia.endereco}"></td>
+            </tr>
         </tbody>
     </table>
 </body>

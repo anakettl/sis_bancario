@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Clientes</title>
+</head>
+    <body>
+        <h1>Clientes</h1>
+
+        <h2>Veja a lista dos clientes</h2>
+
+        <div th:if="${#messages}"></div>
+
+        <div>
+            <a th:href="@{/clientes/create}">Criar</a>
+        </div>
+
+        <table>
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Cpf</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="cliente, count : ${clientes}">
+                    <th scope="row" th:text="${count.count}"></th>
+                    <td><p th:text="${cliente.nome}"></p></td>
+                    <td><p th:text="${cliente.cpf}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

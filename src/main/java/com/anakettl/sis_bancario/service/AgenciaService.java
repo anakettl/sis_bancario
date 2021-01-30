@@ -30,5 +30,4 @@ public class AgenciaService {
             throw new ServiceException("Não foi possivel listar as agencias", exception);
         }
     }
-
 }
