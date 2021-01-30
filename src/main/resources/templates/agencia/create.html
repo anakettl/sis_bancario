@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Cadastrar Agencia</title>
+    </head>
+    <body>
+        <h1>Cadastrar Agencia</h1>
+
+        <form th:action="@{/agencias/create}" th:method="post" th:object="${agencia}">
+            <input type="hidden" id="id" th:field="*{id}"/>
+
+            <label th:for="numero">Número</label>
+            <input th:type="text" id="numero" th:field="*{numero}" th:required="true" placeholder="9875-9">
+
+            <label th:for="endereco">Endereço</label>
+            <input th:type="text" id="endereco" th:field="*{endereco}" th:required="true" placeholder="Av Borges de Medeiros, 275">
+
+            <button th:type="submit">Cadastrar</button>
+
+            <div th:if="${#fields.hasAnyErrors()}" th:each="err : ${#fields.errors()}">
+                <div role="alert">
+                    <strong th:text="${err}"></strong>
+                    <button type="button" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>
