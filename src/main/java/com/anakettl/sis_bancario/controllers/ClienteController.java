@@ -40,7 +40,8 @@ public class ClienteController {
     public ModelAndView salvar(Cliente cliente, BindingResult resultado, RedirectAttributes redirecionamento) {
         ModelAndView model = new ModelAndView("cliente/index");
         try {
-            if (resultado.hasErrors()) {
+            Boolean clienteValido = clientes.validarCpf(cliente.cpf);
+            if (clienteValido==false) {
                 return viewSalvar(cliente);
             }
             this.clientes.salvar(cliente);

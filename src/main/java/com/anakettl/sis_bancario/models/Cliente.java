@@ -17,7 +17,7 @@ public class Cliente implements Serializable {
     private String nome;
 
     @Column
-    private String cpf;
+    public String cpf;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
     private List<ContaEspecial> contas_especiais;
