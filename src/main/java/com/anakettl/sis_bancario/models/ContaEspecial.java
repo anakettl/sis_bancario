@@ -35,9 +35,8 @@ public class ContaEspecial extends Conta {
         this.agencia = agencia;
     }
 
-    public ContaEspecial(Double saldo, Long numero, Long id, Double limite, Cliente cliente, Agencia agencia) {
+    public ContaEspecial(Double saldo, Long numero, Double limite, Cliente cliente, Agencia agencia) {
         super(saldo, numero);
-        this.id = id;
         this.limite = limite;
         this.cliente = cliente;
         this.agencia = agencia;

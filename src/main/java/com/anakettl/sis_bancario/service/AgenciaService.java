@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AgenciaService {
@@ -28,6 +29,17 @@ public class AgenciaService {
             return agencias.findAll();
         } catch (Exception exception) {
             throw new ServiceException("Não foi possivel listar as agencias", exception);
+        }
+    }
+
+    //READ
+    public Agencia agencia(Long id) {
+        try {
+            Optional<Agencia> agencia = this.agencias.findById(id);
+            if (agencia.isPresent()) return agencia.get();
+            else throw new ServiceException("Nao foi possivel buscar a agencia");
+        } catch (Exception exception) {
+            throw new ServiceException("Erro, ", exception);
         }
     }
 }

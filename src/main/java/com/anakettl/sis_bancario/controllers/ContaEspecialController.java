@@ -1,9 +1,10 @@
 package com.anakettl.sis_bancario.controllers;
 
+import com.anakettl.sis_bancario.dto.ContaEspecialDto;
 import com.anakettl.sis_bancario.models.ContaEspecial;
 import com.anakettl.sis_bancario.service.AgenciaService;
-import com.anakettl.sis_bancario.service.ContaEspecialService;
 import com.anakettl.sis_bancario.service.ClienteService;
+import com.anakettl.sis_bancario.service.ContaEspecialService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,29 +17,27 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/contas_especiais")
+@RequestMapping(value = "/contas-especiais")
 public class ContaEspecialController {
 
     private ContaEspecialService contas_especiais;
-
     private ClienteService clientes;
-
     private AgenciaService agencias;
 
     public ContaEspecialController(ContaEspecialService contas_especiais, ClienteService clientes, AgenciaService agencias) {
-
+        super();
         this.contas_especiais = contas_especiais;
         this.clientes = clientes;
         this.agencias = agencias;
     }
 
     @GetMapping("/create")
-    public ModelAndView viewSalvar(ContaEspecial conta_especial) {
+    public ModelAndView viewSalvar(ContaEspecialDto dto) {
         ModelAndView model = new ModelAndView("conta_especial/create");
         model.addObject("clientes", clientes.todos());
         model.addObject("agencias", agencias.todos());
         try {
-            model.addObject("conta_especial", conta_especial);
+            model.addObject("conta_especial", dto);
             return model;
         } catch (Exception exception) {
             model.addObject("erro", exception.getMessage());
@@ -48,19 +47,10 @@ public class ContaEspecialController {
     }
 
     @PostMapping("/create")
-    public ModelAndView salvar(ContaEspecial conta_especial, BindingResult resultado, RedirectAttributes redirecionamento) {
+    public ModelAndView salvar(ContaEspecialDto dto, BindingResult resultado, RedirectAttributes redirecionamento) {
         ModelAndView model = new ModelAndView("conta_especial/index");
-        try {
-            if (resultado.hasErrors()) {
-                return viewSalvar(conta_especial);
-            }
-            this.contas_especiais.salvar(conta_especial);
+            this.contas_especiais.salvar(dto.toEntity());
             return model;
-        }
-        catch (Exception exception) {
-            model.addObject("erro", exception.getMessage());
-            return model;
-        }
     }
 
     @GetMapping

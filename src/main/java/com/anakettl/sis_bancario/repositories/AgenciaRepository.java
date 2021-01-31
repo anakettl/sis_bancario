@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface AgenciaRepository extends JpaRepository<Agencia, Integer> {
-    Optional<Agencia> findById(Integer id);
+public interface AgenciaRepository extends JpaRepository<Agencia, Long> {
+    Optional<Agencia> findById(Long id);
 }

@@ -7,28 +7,27 @@
 <body>
 <h1>Cadastrar Conta Especial</h1>
 
-<form th:action="@{/contas_especiais/create}" th:method="post" th:object="${conta_especial}">
-    <input type="hidden" id="id" th:field="*{id}"/>
+<form th:action="@{/contas-especiais/create}" th:method="post" th:object="${conta_especial}">
 
     <label>Agencia</label>
 
-    <select name="agencia" th:field="*{agencia}" th:required="true">
-        <option th:value="null" selected>Escolha</option>
+    <select name="agencia" th:field="*{id_agencia}" th:required="true">
+        <option th:value="null" th:selected>Escolha</option>
         <option th:each="agencia : ${agencias}" th:value="${agencia.id}"
                 th:text="${agencia.numero}"></option>
     </select>
 
     <label>Cliente</label>
 
-    <select name="cliente" th:field="*{cliente}" th:required="true">
-        <option th:value="null" selected>Escolha</option>
+    <select name="cliente" th:field="*{id_cliente}" th:required="true">
+        <option th:value="null" th:selected>Escolha</option>
         <option th:each="cliente : ${clientes}" th:value="${cliente.id}"
                 th:text="${cliente.nome}"></option>
     </select>
 
 
     <label th:for="limite">Limite</label>
-    <input th:type="text" id="limite" th:field="*{limite}" th:required="true" placeholder="200">
+    <input th:type="number" id="limite" th:field="*{limite}" th:required="true" placeholder="200">
 
     <button th:type="submit">Cadastrar</button>
 

@@ -23,6 +23,11 @@ public class Agencia {
 
     public Agencia() {}
 
+    public Agencia(Long id) {
+        this.id = id;
+    }
+
+
     public Agencia(Long id, String numero, String endereco, List<ContaEspecial> contas_especiais) {
         this.id = id;
         this.numero = numero;

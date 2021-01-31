@@ -22,6 +22,10 @@ public class Cliente implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
     private List<ContaEspecial> contas_especiais;
 
+    public Cliente(Long id) {
+        this.id = id;
+    }
+
     public Cliente() {
     }
 

@@ -14,13 +14,16 @@ public class ContaEspecialService {
     @Autowired
     private ContaEspecialRepository contas_especiais;
 
+    public ContaEspecialService(ContaEspecialRepository contas_especiais) {
+        super();
+        this.contas_especiais = contas_especiais;
+    }
+
     //create
     public void salvar(ContaEspecial conta_especial) {
-        try {
+
             this.contas_especiais.saveAndFlush(conta_especial);
-        } catch (Exception exception) {
-            throw new ServiceException("Não foi possível salvar nova conta especial", exception);
-        }
+
     }
     //all
     public List<ContaEspecial> todos() {
