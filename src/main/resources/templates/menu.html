@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema Bancario</title>
+</head>
+<body>
+    <label>Selecione uma opção para continuar</label>
+
+    <table>
+        <thead>
+        <tr>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="opcao, count : ${opcoes}">
+                <td><a th:href=${opcao.link}><p th:text="${opcao.nome}"></p></a></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</body>
+</html>

@@ -58,10 +58,12 @@ public class ContaEspecialController {
         try {
             List<ContaEspecial> lista = this.contas_especiais.todos();
             model.addAttribute("contas_especiais", lista);
-            return "cliente/index";
+            return "conta_especial/index";
         } catch (Exception exception) {
             model.addAttribute("erro", exception.getMessage());
             return "error";
         }
     }
+
+
 }

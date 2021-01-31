@@ -45,7 +45,7 @@ public class ContaEspecialDto {
     public ContaEspecial toEntity() {
         return new ContaEspecial(
                 Double.valueOf("0"),
-                100L,
+                100L+this.id_cliente,
                 this.limite,
                 new Cliente(this.id_cliente),
                 new Agencia(this.id_agencia)

@@ -31,7 +31,7 @@ public class AgenciaController {
             return model;
         } catch (Exception exception) {
             model.addObject("erro", exception.getMessage());
-            model.setViewName("exemplo");
+            model.setViewName("menu");
             return model;
         }
     }

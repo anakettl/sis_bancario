@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Cont</title>
+    <title>Contas Especiais</title>
 </head>
 <body>
+    <h1>Contas Especiais</h1>
+
+    <h2>Veja a lista das Contas Especiais</h2>
+
+    <div th:if="${#messages}"></div>
+
+    <div>
+        <a th:href="@{/contas-especiais/create}">Criar</a>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">numero</th>
+            <th scope="col">saldo</th>
+            <th scope="col">limite</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="conta_especial, count : ${contas_especiais}">
+            <th scope="row" th:text="${count.count}"></th>
+            <td><p th:text="${conta_especial.numero}"></p></td>
+            <td><p th:text="${conta_especial.saldo}"></p></td>
+            <td><p th:text="${conta_especial.limite}"></td>
+        </tr>
+        </tbody>
+    </table>
 
 </body>
 </html>
