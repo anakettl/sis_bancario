@@ -10,7 +10,21 @@
 <form th:action="@{/contas_especiais/create}" th:method="post" th:object="${conta_especial}">
     <input type="hidden" id="id" th:field="*{id}"/>
 
+    <label>Agencia</label>
+
+    <select name="agencia" th:field="*{agencia}" th:required="true">
+        <option th:value="null" selected>Escolha</option>
+        <option th:each="agencia : ${agencias}" th:value="${agencia.id}"
+                th:text="${agencia.numero}"></option>
+    </select>
+
     <label>Cliente</label>
+
+    <select name="cliente" th:field="*{cliente}" th:required="true">
+        <option th:value="null" selected>Escolha</option>
+        <option th:each="cliente : ${clientes}" th:value="${cliente.id}"
+                th:text="${cliente.nome}"></option>
+    </select>
 
 
     <label th:for="limite">Limite</label>

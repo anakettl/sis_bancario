@@ -1,8 +1,7 @@
 package com.anakettl.sis_bancario.controllers;
 
-import com.anakettl.sis_bancario.models.Agencia;
-import com.anakettl.sis_bancario.models.Cliente;
 import com.anakettl.sis_bancario.models.ContaEspecial;
+import com.anakettl.sis_bancario.service.AgenciaService;
 import com.anakettl.sis_bancario.service.ContaEspecialService;
 import com.anakettl.sis_bancario.service.ClienteService;
 import org.springframework.stereotype.Controller;
@@ -24,14 +23,20 @@ public class ContaEspecialController {
 
     private ClienteService clientes;
 
-    public ContaEspecialController(ContaEspecialService clientes) {
+    private AgenciaService agencias;
+
+    public ContaEspecialController(ContaEspecialService contas_especiais, ClienteService clientes, AgenciaService agencias) {
+
         this.contas_especiais = contas_especiais;
+        this.clientes = clientes;
+        this.agencias = agencias;
     }
 
     @GetMapping("/create")
     public ModelAndView viewSalvar(ContaEspecial conta_especial) {
         ModelAndView model = new ModelAndView("conta_especial/create");
-        model.addObject("clientes", this.clientes.todos());
+        model.addObject("clientes", clientes.todos());
+        model.addObject("agencias", agencias.todos());
         try {
             model.addObject("conta_especial", conta_especial);
             return model;
