@@ -1,6 +1,7 @@
 package com.anakettl.sis_bancario.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Table
 @Entity
@@ -17,11 +18,16 @@ public class Agencia {
     @Column
     private String endereco;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<ContaEspecial> contas_especiais;
+
     public Agencia() {}
 
-    public Agencia(Long id, String numero, String endereco) {
+    public Agencia(Long id, String numero, String endereco, List<ContaEspecial> contas_especiais) {
+        this.id = id;
         this.numero = numero;
         this.endereco = endereco;
+        this.contas_especiais = contas_especiais;
     }
 
     public Long getId() {
@@ -48,8 +54,21 @@ public class Agencia {
         this.endereco = endereco;
     }
 
+    public List<ContaEspecial> getContas_especiais() {
+        return contas_especiais;
+    }
+
+    public void setContas_especiais(List<ContaEspecial> contas_especiais) {
+        this.contas_especiais = contas_especiais;
+    }
+
     @Override
     public String toString() {
-        return "Agencia [numero=" + numero + ", endereco " + endereco + "]";
+        return "Agencia{" +
+                "id=" + id +
+                ", numero='" + numero + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", contas_especiais=" + contas_especiais +
+                '}';
     }
 }

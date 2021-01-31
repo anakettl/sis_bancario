@@ -4,9 +4,11 @@ import com.anakettl.sis_bancario.models.ContaEspecial;
 import com.anakettl.sis_bancario.repositories.ContaEspecialRepository;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ContaEspecialService {
 
     @Autowired

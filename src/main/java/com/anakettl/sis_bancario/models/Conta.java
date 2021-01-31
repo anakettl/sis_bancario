@@ -1,14 +1,12 @@
 package com.anakettl.sis_bancario.models;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @MappedSuperclass
-public class Conta implements Serializable {
-    @Column
+public abstract class Conta {
+
     protected Double saldo;
 
-    @Column
     protected Long numero;
 
     public Conta() {}
@@ -36,7 +34,9 @@ public class Conta implements Serializable {
 
     @Override
     public String toString() {
-        return "Conta [numero=" + numero + ", saldo " + saldo + "]";
+        return "Conta{" +
+                "saldo=" + saldo +
+                ", numero=" + numero +
+                '}';
     }
-
 }
