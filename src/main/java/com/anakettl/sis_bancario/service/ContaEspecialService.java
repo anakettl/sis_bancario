@@ -33,4 +33,29 @@ public class ContaEspecialService {
             throw new ServiceException("Não foi possivel listar as contas especiais", exception);
         }
     }
+
+    //search by number
+    public List<ContaEspecial> buscarContaEspecialPeloNumero(Long numero) {
+        try {
+            return this.contas_especiais.findByNumero(numero);
+        } catch (Exception exception) {
+            throw new ServiceException("Não foi buscar contas pelo numero", exception);
+        }
+    }
+
+    public List<ContaEspecial> buscarContaEspecialPelaAgencia(String numero) {
+        try {
+            return this.contas_especiais.findByAgencia(numero);
+        } catch (Exception exception) {
+            throw new ServiceException("Não foi buscar contas pela agencia", exception);
+        }
+    }
+
+    public List<ContaEspecial> buscarContaEspecialPeloCliente(String cpf) {
+        try {
+            return this.contas_especiais.findByCliente(cpf);
+        } catch (Exception exception) {
+            throw new ServiceException("Não foi buscar contas pelo cliente", exception);
+        }
+    }
 }

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Perquisar Conta Especial</title>
+</head>
+<body>
+    <h1>Pesquisar Conta Especial</h1>
+
+    <form th:action="@{/contas-especiais/search}" th:method="post" >
+
+        <label th:for="texto">Digite</label>
+        <input th:type="text" id="numero" th:field="*{numero}" th:required="true" placeholder="200">
+
+        <select name="tipo" th:field="*{tipo}" th:required="true">
+            <option th:value="null" th:selected>Escolha</option>
+            <option th:value="1" th:selected>Numero</option>
+            <option th:value="2" th:selected>Agencia</option>
+            <option th:value="3" th:selected>Cpf</option>
+        </select>
+
+        <button th:type="submit">Buscar</button>
+    </form>
+
+</body>
+</html>

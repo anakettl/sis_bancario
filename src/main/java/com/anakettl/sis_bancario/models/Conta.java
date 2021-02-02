@@ -32,6 +32,28 @@ public abstract class Conta {
         this.numero = numero;
     }
 
+    public boolean credita(double valor) {
+        boolean resultado;
+        if (valor > 0) {
+            this.saldo = this.saldo + valor;
+            resultado = true;
+        } else {
+            resultado = false;
+        }
+        return resultado;
+    }
+
+    public boolean debita(double valor) {
+        boolean resultado;
+        if (saldo > valor) {
+            this.saldo = this.saldo + valor;
+            resultado = true;
+        } else {
+            resultado = false;
+        }
+        return resultado;
+    }
+
     @Override
     public String toString() {
         return "Conta{" +

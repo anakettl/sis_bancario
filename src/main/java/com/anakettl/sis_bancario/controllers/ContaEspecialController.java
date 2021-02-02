@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -65,5 +66,36 @@ public class ContaEspecialController {
         }
     }
 
+    @GetMapping("/search")
+    public ModelAndView viewSalvar(String texto, String tipo) {
+        ModelAndView model = new ModelAndView("conta_especial/search");
+        model.addObject("texto", texto);
+        model.addObject("tipo", tipo);
+        return model;
+    }
+
+    @PostMapping("/search")
+    public String pesquisar(Model model, String texto, String tipo) {
+        try {
+            List<ContaEspecial> lista = new ArrayList<ContaEspecial>();
+            switch (tipo) {
+                case "1":
+                    lista = this.contas_especiais.buscarContaEspecialPeloNumero(Long.parseLong(texto));
+                    break;
+                case "2":
+                    lista = this.contas_especiais.buscarContaEspecialPelaAgencia(texto);
+                    break;
+                case "3":
+                    lista = this.contas_especiais.buscarContaEspecialPeloCliente(texto);
+                    break;
+            }
+            model.addAttribute("contas_especiais", lista);
+            return "contas_especiais";
+        } catch (Exception exception) {
+            model.addAttribute("erro", exception.getMessage());
+            return "error";
+        }
+
+    }
 
 }
